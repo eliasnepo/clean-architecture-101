@@ -1,4 +1,4 @@
-package br.com.cleanarch.application.orders.create.retrieve.update;
+package br.com.cleanarch.application.orders.update;
 
 import br.com.cleanarch.domain.orders.OrderSource;
 

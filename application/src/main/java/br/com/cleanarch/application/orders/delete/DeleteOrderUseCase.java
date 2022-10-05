@@ -1,4 +1,4 @@
-package br.com.cleanarch.application.orders.create.retrieve.delete;
+package br.com.cleanarch.application.orders.delete;
 
 import br.com.cleanarch.application.InUseCase;
 import br.com.cleanarch.domain.orders.OrderGateway;

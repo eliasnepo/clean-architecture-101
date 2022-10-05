@@ -1,4 +1,4 @@
-package br.com.cleanarch.application.orders.create.retrieve.list;
+package br.com.cleanarch.application.orders.retrieve.list;
 
 import br.com.cleanarch.application.OutUseCase;
 import br.com.cleanarch.domain.orders.Order;
