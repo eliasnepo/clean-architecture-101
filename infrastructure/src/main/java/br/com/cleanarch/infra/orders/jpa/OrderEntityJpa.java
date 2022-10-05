@@ -6,6 +6,7 @@ import br.com.cleanarch.domain.orders.Order;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "tb_orders")
 public class OrderEntityJpa {
 
     @Id
