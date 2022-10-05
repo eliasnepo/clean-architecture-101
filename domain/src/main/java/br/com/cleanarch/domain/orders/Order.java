@@ -1,8 +1,11 @@
 package br.com.cleanarch.domain.orders;
 
 import br.com.cleanarch.domain.exceptions.DomainException;
+import br.com.cleanarch.domain.validation.Error;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
 
@@ -43,10 +46,16 @@ public class Order {
     }
 
     private void validate(Order order) {
+        List<Error> errors = new ArrayList<>();
+
         if (price <= 10.0) {
-            throw new DomainException("order's value must be greater than $10");
+            errors.add(new Error("order's value must be greater than $10"));
         } else if (isConsumed) {
-            throw new DomainException("you can not create a order already consumed");
+            errors.add(new Error("you can not create a order already consumed"));
+        }
+
+        if (errors.size() > 0) {
+            throw new DomainException("error(s) happened while validate order", errors);
         }
     }
 }
