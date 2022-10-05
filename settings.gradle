@@ -1,1 +1,5 @@
 rootProject.name = 'cleanarch'
+include 'domain'
+include 'application'
+include 'infrastructure'
+
