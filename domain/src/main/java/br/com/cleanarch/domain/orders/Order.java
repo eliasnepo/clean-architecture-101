@@ -3,7 +3,6 @@ package br.com.cleanarch.domain.orders;
 import br.com.cleanarch.domain.exceptions.DomainException;
 import br.com.cleanarch.domain.validation.Error;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +11,9 @@ public class Order {
     private Long id;
     private Double price;
     private Boolean isConsumed;
-    private OrderSouce source;
+    private OrderSource source;
 
-    public Order(Long id, Double price, Boolean isConsumed, OrderSouce source) {
+    public Order(Long id, Double price, Boolean isConsumed, OrderSource source) {
         this.id = id;
         this.price = price;
         this.isConsumed = isConsumed;
@@ -22,7 +21,7 @@ public class Order {
         validate(this);
     }
 
-    public Order(Double price, Boolean isConsumed, OrderSouce source) {
+    public Order(Double price, Boolean isConsumed, OrderSource source) {
         this.price = price;
         this.isConsumed = isConsumed;
         this.source = source;
@@ -48,7 +47,7 @@ public class Order {
         return isConsumed;
     }
 
-    public OrderSouce getSource() {
+    public OrderSource getSource() {
         return source;
     }
 
