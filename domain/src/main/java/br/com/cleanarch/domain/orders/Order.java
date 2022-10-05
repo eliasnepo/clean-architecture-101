@@ -22,6 +22,13 @@ public class Order {
         validate(this);
     }
 
+    public Order(Double price, Boolean isConsumed, OrderSouce source) {
+        this.price = price;
+        this.isConsumed = isConsumed;
+        this.source = source;
+        validate(this);
+    }
+
     public void consume() {
         if (isConsumed) {
             throw new DomainException("order already consumed");
