@@ -1,4 +1,4 @@
-package br.com.cleanarch.infra.orders.jpa;
+package br.com.cleanarch.infra.orders.persistence.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

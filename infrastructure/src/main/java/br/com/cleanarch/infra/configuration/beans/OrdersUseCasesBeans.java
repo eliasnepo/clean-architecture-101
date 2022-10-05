@@ -18,7 +18,7 @@ public class OrdersUseCasesBeans {
         this.orderGateway = orderGateway;
     }
 
-    @Bean
+    @Bean()
     public CreateOrderUseCase createOrderUseCase() {
         return new CreateOrderUseCase(orderGateway);
     }

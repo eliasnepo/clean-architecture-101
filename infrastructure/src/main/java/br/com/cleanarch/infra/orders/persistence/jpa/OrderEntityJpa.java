@@ -1,4 +1,4 @@
-package br.com.cleanarch.infra.orders.jpa;
+package br.com.cleanarch.infra.orders.persistence.jpa;
 
 import br.com.cleanarch.domain.orders.OrderSource;
 import br.com.cleanarch.domain.orders.Order;

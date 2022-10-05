@@ -1,11 +1,15 @@
-package br.com.cleanarch.infra.orders;
+package br.com.cleanarch.infra.orders.persistence;
 
 import br.com.cleanarch.domain.orders.Order;
 import br.com.cleanarch.domain.orders.OrderGateway;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Primary
+@Repository
 public class OrderH2Gateway implements OrderGateway {
 
     @Override
