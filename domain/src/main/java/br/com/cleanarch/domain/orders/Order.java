@@ -35,6 +35,11 @@ public class Order {
         this.isConsumed = true;
     }
 
+    public void changePrice(Double price) {
+        this.price = price;
+        validate(this);
+    }
+
     public Long getId() {
         return id;
     }
