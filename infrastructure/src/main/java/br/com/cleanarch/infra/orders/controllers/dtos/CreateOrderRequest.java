@@ -1,4 +1,4 @@
 package br.com.cleanarch.infra.orders.controllers.dtos;
 
-public record CreateOrderRequest() {
+public record CreateOrderRequest(Double price) {
 }

@@ -1,4 +1,4 @@
 package br.com.cleanarch.infra.orders.controllers.dtos;
 
-public record UpdateOrderRequest() {
+public record UpdateOrderRequest(Double price) {
 }

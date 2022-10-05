@@ -1,4 +1,6 @@
 package br.com.cleanarch.infra.orders.controllers.dtos;
 
-public record GetOrderByIdResponse() {
+import br.com.cleanarch.domain.orders.OrderSource;
+
+public record GetOrderByIdResponse(Long id, Double price, Boolean isConsumed, OrderSource source) {
 }
