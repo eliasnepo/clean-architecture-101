@@ -15,4 +15,6 @@ public interface OrderGateway {
 
     List<Order> findAll();
 
+    boolean existsById(Long id);
+
 }
