@@ -2,6 +2,8 @@ package br.com.cleanarch.infra.configuration;
 
 import com.amazon.sqs.javamessaging.ProviderConfiguration;
 import com.amazon.sqs.javamessaging.SQSConnectionFactory;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
@@ -21,11 +23,14 @@ public class JmsSqsConfig {
 
     @Bean
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
+        // Apenas para ambiente de teste
+        BasicAWSCredentials credentials = new BasicAWSCredentials("key", "secret");
+
         sqsConnectionFactory = new SQSConnectionFactory(
                 new ProviderConfiguration(),
                 AmazonSQSClientBuilder.standard()
                         .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://localhost:4566", "sa-east-1"))
-                        .withCredentials(new DefaultAWSCredentialsProviderChain())
+                        .withCredentials(new AWSStaticCredentialsProvider(credentials))
                         .build());
 
         DefaultJmsListenerContainerFactory factory =
