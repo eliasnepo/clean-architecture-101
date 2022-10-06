@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,7 +40,7 @@ public class OrderController {
 
 
     @PostMapping
-    public ResponseEntity<?> createOrder(@RequestBody CreateOrderRequest request) {
+    public ResponseEntity<?> createOrder(@RequestBody @Valid CreateOrderRequest request) {
         var output = createOrderUseCase.execute(new CreateOrderInput(request.price(), OrderSource.API));
 
         return ResponseEntity.created(URI.create("/orders/" + output.id())).body(output);
