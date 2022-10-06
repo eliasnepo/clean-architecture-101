@@ -59,7 +59,7 @@ public class Order {
     private void validate(Order order) {
         List<Error> errors = new ArrayList<>();
 
-        if (price <= 10.0) {
+        if (price < 10.0) {
             errors.add(new Error("price", "order's value must be greater than $10"));
         } else if (isConsumed) {
             errors.add(new Error("isConsumed", "you can not create a order already consumed"));

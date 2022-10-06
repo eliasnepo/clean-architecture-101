@@ -1,4 +1,6 @@
 package br.com.cleanarch.infra.orders.controllers.dtos;
 
-public record UpdateOrderRequest(Double price) {
+import javax.validation.constraints.DecimalMin;
+
+public record UpdateOrderRequest(@DecimalMin("10.0") Double price) {
 }
