@@ -1,6 +1,7 @@
 package br.com.cleanarch.application.orders.update;
 
 import br.com.cleanarch.application.UseCase;
+import br.com.cleanarch.application.exceptions.NotFoundException;
 import br.com.cleanarch.domain.orders.Order;
 import br.com.cleanarch.domain.orders.OrderGateway;
 
@@ -17,7 +18,7 @@ public class UpdateOrderUseCase extends UseCase<UpdateOrderInput, UpdateOrderOut
     @Override
     public UpdateOrderOutput execute(UpdateOrderInput updateOrderInput) {
         Order order = orderGateway.findById(updateOrderInput.id())
-                .orElseThrow(() -> new NoSuchElementException("order does not exists"));
+                .orElseThrow(() -> new NotFoundException("order does not exists"));
 
         order.changePrice(updateOrderInput.price());
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DomainException extends RuntimeException {
 
-    List<Error> erros = new ArrayList<>();
+    List<Error> errors = new ArrayList<>();
 
     public DomainException(String message) {
         super(message);
@@ -15,6 +15,10 @@ public class DomainException extends RuntimeException {
 
     public DomainException(String message, List<Error> errors) {
         super(message);
-        this.erros.addAll(errors);
+        this.errors.addAll(errors);
+    }
+
+    public List<Error> getErrors() {
+        return errors;
     }
 }

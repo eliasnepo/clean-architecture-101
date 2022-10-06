@@ -60,9 +60,9 @@ public class Order {
         List<Error> errors = new ArrayList<>();
 
         if (price <= 10.0) {
-            errors.add(new Error("order's value must be greater than $10"));
+            errors.add(new Error("price", "order's value must be greater than $10"));
         } else if (isConsumed) {
-            errors.add(new Error("you can not create a order already consumed"));
+            errors.add(new Error("isConsumed", "you can not create a order already consumed"));
         }
 
         if (errors.size() > 0) {
