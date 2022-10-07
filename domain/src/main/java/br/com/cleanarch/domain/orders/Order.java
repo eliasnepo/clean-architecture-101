@@ -2,6 +2,8 @@ package br.com.cleanarch.domain.orders;
 
 import br.com.cleanarch.domain.exceptions.DomainException;
 import br.com.cleanarch.domain.validation.Error;
+import br.com.cleanarch.domain.validation.ValidationHandler;
+import br.com.cleanarch.domain.validation.handlers.NotificationHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,16 +59,14 @@ public class Order {
     }
 
     private void validate(Order order) {
-        List<Error> errors = new ArrayList<>();
+        ValidationHandler notification = new NotificationHandler();
 
         if (price < 10.0) {
-            errors.add(new Error("price", "order's value must be greater than $10"));
+            notification.append(new Error("price", "order's value must be greater than $10"));
         } else if (isConsumed) {
-            errors.add(new Error("isConsumed", "you can not create a order already consumed"));
+            notification.append(new Error("isConsumed", "you can not create a order already consumed"));
         }
 
-        if (errors.size() > 0) {
-            throw new DomainException("error(s) happened while validate order", errors);
-        }
+        notification.validate();
     }
 }
