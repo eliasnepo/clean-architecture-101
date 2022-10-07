@@ -20,8 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/orders")
-public class OrderController {
+public class OrderController implements OrderControllerAPI {
 
     @Autowired
     private CreateOrderUseCase createOrderUseCase;
@@ -39,22 +38,19 @@ public class OrderController {
     private DeleteOrderUseCase deleteOrderUseCase;
 
 
-    @PostMapping
-    public ResponseEntity<?> createOrder(@RequestBody @Valid CreateOrderRequest request) {
+    public ResponseEntity<?> createOrder(CreateOrderRequest request) {
         var output = createOrderUseCase.execute(new CreateOrderInput(request.price(), OrderSource.API));
 
         return ResponseEntity.created(URI.create("/orders/" + output.id())).body(output);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<GetOrderByIdResponse> getOrderById(@PathVariable Long id) {
+    public ResponseEntity<GetOrderByIdResponse> getOrderById(Long id) {
         var output = getOrderByIdUseCase.execute(id);
         var response = new GetOrderByIdResponse(output.id(), output.price(), output.isConsumed(), output.source());
 
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping
     public ResponseEntity<List<ListOrdersResponse>> listOrders() {
         var output = listOrdersUseCase.execute();
         var response = output
@@ -65,14 +61,12 @@ public class OrderController {
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteOrders(@PathVariable Long id) {
+    public ResponseEntity<?> deleteOrders(Long id) {
         deleteOrderUseCase.execute(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<UpdateOrderResponse> updateOrder(@PathVariable Long id, @RequestBody UpdateOrderRequest request) {
+    public ResponseEntity<UpdateOrderResponse> updateOrder(Long id, UpdateOrderRequest request) {
         var output = updateOrderUseCase.execute(OrderPresenters.present(id, request));
         var response = new UpdateOrderResponse(output.id(), output.price(), output.isConsumed(), output.source());
         
